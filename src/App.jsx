@@ -6,6 +6,12 @@ import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
 import Title from './components/Title';
 
+import StepSection from './components/StepSection';
+import StepHeader from './components/StepHeader';
+import StepNumber from './components/StepNumber';
+import StepTitle from './components/StepTitle';
+import StepDescription from './components/StepDescription';
+
 // Globals
 const logo = 'https://kbsb.app/assets/svg/kaboom_shebang_logo.svg';
 const logoMenu = 'https://kbsb.app/assets/svg/icon_hamburger.svg';
@@ -25,6 +31,17 @@ function App() {
 					count is: {count}
 				</button>
 			</header>
+
+			<StepSection>
+				<StepHeader>
+					<StepNumber number="2" color="#F0DBC7"></StepNumber>
+					<StepTitle title="Check the image sequence"></StepTitle>
+				</StepHeader>
+				<StepDescription
+					title="Enter the output size of the GIF animation"
+					description="Default values are based on the input images"
+				></StepDescription>
+			</StepSection>
 
 			<Footer />
 		</div>
