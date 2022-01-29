@@ -2,16 +2,23 @@ import { useState } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
-import Header from './components/Header';
+import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
+import Title from './components/Title';
+
+// Globals
+const logo = 'https://kbsb.app/assets/svg/kaboom_shebang_logo.svg';
+const logoMenu = 'https://kbsb.app/assets/svg/icon_hamburger.svg';
+const title = 'kbsb GIF Creator';
+const subTitle = 'Create an animated GIF from still images';
 
 function App() {
-	const logo = 'https://www.kaboomshebang.com/logos/kaboom_shebang_logo.svg';
 	const [count, setCount] = useState(0);
 
 	return (
 		<div className="App">
-			<Header url={logo} alt="Kaboom Shebang" />
+			<NavHeader urlLogo={logo} altLogo="Kaboom Shebang" urlMenu={logoMenu} />
+			<Title title={title} subTitle={subTitle}></Title>
 
 			<header className="App-header">
 				<button type="button" onClick={() => setCount((count) => count + 1)}>
