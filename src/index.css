@@ -1,11 +1,14 @@
+@import 'https://kbsb.app/assets/fonts/ibm_plex_sans/font_ibm_plex_sans.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-		'Droid Sans', 'Helvetica Neue', sans-serif;
+	font-family: 'IBM Plex Sans', sans-serif; /* weights: 300 400 600*/
+	font-feature-settings: 'kern' 1;
+	font-kerning: normal;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
