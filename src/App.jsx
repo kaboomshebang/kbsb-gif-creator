@@ -6,6 +6,8 @@ import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
 import Title from './components/Title';
 
+import Button from './components/Button';
+
 import StepSection from './components/StepSection';
 import StepHeader from './components/StepHeader';
 import StepNumber from './components/StepNumber';
@@ -90,6 +92,26 @@ function App() {
 					description="A lower threshold value gives better quality results, but takes longer to generate (default: 2)."
 				></StepDescription>
 				<Slider min="1" max="5" step="1" default="2"></Slider>
+			</StepSection>
+
+			{/* Export sequence step */}
+			<StepSection>
+				<StepHeader>
+					<StepNumber number="4" color="#C89E9E"></StepNumber>
+					<StepTitle title="Export sequence to GIF"></StepTitle>
+				</StepHeader>
+				<StepDescription title="Loop" description="How many times should the animation loop."></StepDescription>
+				<div className="flex row space-x-2">
+					<Button label="Forever"></Button>
+					<Button label="1 Loop"></Button>
+					<Button label="2 Loops"></Button>
+					<Button label="3 Loops"></Button>
+				</div>
+				<StepDescription
+					title="Export"
+					description="Done! Click export to start the process."
+				></StepDescription>
+				<Button label="🎬 Generate GIF" color="#C4CFBE"></Button>
 			</StepSection>
 
 			<Footer />
