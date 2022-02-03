@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 
 import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
@@ -15,6 +15,8 @@ import StepDescription from './components/StepDescription';
 import ImageSeq from './components/ImageSeq';
 import Image from './components/Image';
 import ImageSize from './components/ImageSize';
+
+import Slider from './components/Slider';
 
 // Globals
 const logo = 'https://kbsb.app/assets/svg/kaboom_shebang_logo.svg';
@@ -36,6 +38,7 @@ function App() {
 				</button>
 			</header>
 
+			{/* image sequence step */}
 			<StepSection>
 				<StepHeader>
 					<StepNumber number="2" color="#F0DBC7"></StepNumber>
@@ -67,10 +70,26 @@ function App() {
 					title="Enter the output size of the GIF animation"
 					description="Default values are based on the input images"
 				></StepDescription>
-				<div className="flex flex-col items-start">
-					<ImageSize size="width" color="#F0DBC7"></ImageSize>
-					<ImageSize size="height" color="#F0DBC7"></ImageSize>
-				</div>
+				<ImageSize size="width" color="#F0DBC7"></ImageSize>
+				<ImageSize size="height" color="#F0DBC7"></ImageSize>
+			</StepSection>
+
+			{/* GIF/animation properties step */}
+			<StepSection>
+				<StepHeader>
+					<StepNumber number="3" color="#727896"></StepNumber>
+					<StepTitle title="GIF/animation properties"></StepTitle>
+				</StepHeader>
+				<StepDescription
+					title="Frameduration"
+					description="The amount of time (in sec.) to stay on a frame (min: 1s, max 5s)."
+				></StepDescription>
+				<Slider min="1" max="5" step="0.5" default="1.5" unit="seconds"></Slider>
+				<StepDescription
+					title="Image quality"
+					description="A lower threshold value gives better quality results, but takes longer to generate (default: 2)."
+				></StepDescription>
+				<Slider min="1" max="5" step="1" default="2"></Slider>
 			</StepSection>
 
 			<Footer />
