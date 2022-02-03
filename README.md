@@ -5,8 +5,11 @@ Generate an animated GIF from a set of images. Built with React.
 ## Todo
 
 - [ ] change nav sizes
+- [ ] Add Drag and Drop API
 - [ ] add components
     - [ ] image sequence
+        + [ ] add image ordering
+        + [ ] add resoution button
     - [ ] gif properties
         - [ ] create slider component
     - [ ] export GIF
@@ -14,3 +17,8 @@ Generate an animated GIF from a set of images. Built with React.
 - [ ] create modal component to display output
 - [ ] setup all logic to generate GIF
 - [ ] connect components to the GIFshot js lib
+
+``
+https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
+https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API
+```
