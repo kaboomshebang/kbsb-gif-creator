@@ -14,6 +14,7 @@ import StepDescription from './components/StepDescription';
 
 import ImageSeq from './components/ImageSeq';
 import Image from './components/Image';
+import ImageSize from './components/ImageSize';
 
 // Globals
 const logo = 'https://kbsb.app/assets/svg/kaboom_shebang_logo.svg';
@@ -40,6 +41,10 @@ function App() {
 					<StepNumber number="2" color="#F0DBC7"></StepNumber>
 					<StepTitle title="Check the image sequence"></StepTitle>
 				</StepHeader>
+				<StepDescription
+					title="Uploaded images"
+					description="Drag and drop to change the order"
+				></StepDescription>
 				<ImageSeq>
 					<Image
 						url="https://kbsb.app/assets/images/image-placeholder-grey-400px.png"
@@ -62,6 +67,10 @@ function App() {
 					title="Enter the output size of the GIF animation"
 					description="Default values are based on the input images"
 				></StepDescription>
+				<div className="flex flex-col items-start">
+					<ImageSize size="width" color="#F0DBC7"></ImageSize>
+					<ImageSize size="height" color="#F0DBC7"></ImageSize>
+				</div>
 			</StepSection>
 
 			<Footer />
