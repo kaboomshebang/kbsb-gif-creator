@@ -27,18 +27,10 @@ const title = 'kbsb GIF Creator';
 const subTitle = 'Create an animated GIF from still images';
 
 function App() {
-	const [count, setCount] = useState(0);
-
 	return (
 		<div className="App">
 			<NavHeader urlLogo={logo} altLogo="Kaboom Shebang" urlMenu={logoMenu} />
 			<Title title={title} subTitle={subTitle}></Title>
-
-			<header className="App-header">
-				<button type="button" onClick={() => setCount((count) => count + 1)}>
-					count is: {count}
-				</button>
-			</header>
 
 			{/* image sequence step */}
 			<StepSection>
