@@ -19,8 +19,20 @@ Generate an animated GIF from a set of images. Built with React.
 - [ ] add state to components
 - [ ] setup all logic to generate GIF
 - [ ] connect components to the GIFshot js lib
+- [ ] add to Vercel and link domain
 
-``
+```
 https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
 https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API
+```
+
+```
+// useState example
+const [count, setCount] = useState(0);
+
+<header className="App-header">
+    <button type="button" onClick={() => setCount((count) => count + 1)}>
+        count is: {count}
+    </button>
+</header>
 ```
