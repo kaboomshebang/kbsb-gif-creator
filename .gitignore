@@ -4,4 +4,7 @@ dist
 dist-ssr
 *.local
 .pnpm-debug.log
+
+# OS temporary files
 *.md.swp
+*.Identifier

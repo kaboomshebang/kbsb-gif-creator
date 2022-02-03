@@ -7,7 +7,7 @@ class StepId extends React.Component {
 		};
 
 		return (
-			<span className="px-4 py-2 text-white" style={style}>
+			<span className="px-4 py-2 text-white font-bold" style={style}>
 				{this.props.number}
 			</span>
 		);
