@@ -16,7 +16,7 @@ class ImageSize extends React.Component {
 					min="0"
 					max="9999"
 					step="1"
-					value="300"
+					defaultValue="300"
 				/>
 				<span className="pl-2">pixels</span>
 			</div>
