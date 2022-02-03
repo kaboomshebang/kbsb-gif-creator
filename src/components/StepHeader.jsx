@@ -2,7 +2,7 @@ import React from 'react';
 
 class StepHeader extends React.Component {
 	render() {
-		return <header className="flex row items-center">{this.props.children}</header>;
+		return <header className="flex row items-center space-x-2">{this.props.children}</header>;
 	}
 }
 
