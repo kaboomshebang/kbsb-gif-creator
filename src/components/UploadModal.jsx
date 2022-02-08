@@ -12,10 +12,12 @@ class UploadModal extends React.Component {
 		this.dragImageOver = this.dragImageOver.bind(this);
 		this.dropImage = this.dropImage.bind(this);
 		this.dragLeave = this.dragLeave.bind(this);
+
+		this.selectedImage = this.selectedImage.bind(this);
 	}
 
 	componentDidMount() {
-		// delay the the state change for the opacity transition
+		// delay the state change for the opacity transition
 		setTimeout(() => {
 			this.setState({
 				showModal: true,
@@ -67,6 +69,16 @@ class UploadModal extends React.Component {
 		}
 	}
 
+	selectedImage(e) {
+		console.log(e.target.files);
+		let items = [];
+
+		for (const i of e.target.files) {
+			items = [...items, URL.createObjectURL(i)];
+		}
+		this.props.filesFunc(items);
+	}
+
 	render() {
 		const styles = {
 			transition: 'opacity 1000ms',
@@ -113,14 +125,28 @@ class UploadModal extends React.Component {
 							</div>
 						</div>
 						<div className="flex justify-center items-center bg-gray-100 w-full p-6 h-[calc(50%_-_1.5rem)]">
-							<div className="flex flex-col items-center">
-								<img
-									className="w-14"
-									src="https://kbsb.app/assets/svg/icon_file_upload_black.svg"
-									alt="File"
-								/>
-								<button className="text-xl text-black font-medium mt-4">Select files to upload</button>
-							</div>
+							<label className="cursor-pointer" htmlFor="files">
+								<div className="flex flex-col items-center">
+									<img
+										className="w-14"
+										src="https://kbsb.app/assets/svg/icon_file_upload_black.svg"
+										alt="File"
+									/>
+									<div>
+										<p className="text-xl text-black font-medium mt-4">Select files to upload</p>
+										<input
+											onChange={this.selectedImage}
+											className="text-xl text-black font-medium mt-4"
+											type="file"
+											id="files"
+											name="files"
+											accept="image/png, image/jpeg"
+											multiple
+											style={{ display: 'none' }}
+										></input>
+									</div>
+								</div>
+							</label>
 						</div>
 					</article>
 				</section>
