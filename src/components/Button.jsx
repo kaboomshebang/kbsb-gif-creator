@@ -7,7 +7,7 @@ class Button extends React.Component {
 		};
 
 		return (
-			<button style={style} className="text-base font-medium bg-gray-300 px-7 py-2">
+			<button style={style} className="text-base font-medium bg-gray-300 px-7 py-2" onClick={this.props.btnClick}>
 				{this.props.label}
 			</button>
 		);
