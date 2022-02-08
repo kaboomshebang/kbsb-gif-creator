@@ -21,7 +21,7 @@ import ImageSize from './components/ImageSize';
 
 import Slider from './components/Slider';
 
-// Globals
+// component props
 const logo = 'https://kbsb.app/assets/svg/kaboom_shebang_logo.svg';
 const logoMenu = 'https://kbsb.app/assets/svg/icon_hamburger.svg';
 const title = 'kbsb GIF Creator';
@@ -31,6 +31,19 @@ const placeholder = 'https://kbsb.app/assets/images/image-placeholder-grey-400px
 function App() {
 	// global state for the files
 	const [files, setFiles] = useState([]);
+	// state for the image sequence
+	const [size, setSize] = useState({
+		width: 300,
+		height: 300,
+	});
+
+	const Images = () => {
+		if (files.length > 0) {
+			return files.map((f, index) => <Image key={`img_${index}`} url={f} alt="Test image"></Image>);
+		} else {
+			return <Image url={placeholder} alt="Test image"></Image>;
+		}
+	};
 
 	return (
 		<div className="App">
@@ -50,12 +63,8 @@ function App() {
 					title="Uploaded images"
 					description="Drag and drop to change the order"
 				></StepDescription>
-				<ImageSeq>
-					<Image url={placeholder} alt="Test image"></Image>
-					<Image url={placeholder} alt="Test image"></Image>
-					<Image url={placeholder} alt="Test image"></Image>
-					<Image url={placeholder} alt="Test image"></Image>
-				</ImageSeq>
+				{/* place images */}
+				<ImageSeq>{Images()}</ImageSeq>
 				<StepDescription
 					title="Enter the output size of the GIF animation"
 					description="Default values are based on the input images"
