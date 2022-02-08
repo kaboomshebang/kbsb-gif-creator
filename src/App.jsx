@@ -4,7 +4,8 @@ import { useState } from 'react';
 
 import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
-import Title from './components/Title';
+
+import UploadStep from './components/UploadStep';
 
 import Button from './components/Button';
 
@@ -25,12 +26,19 @@ const logo = 'https://kbsb.app/assets/svg/kaboom_shebang_logo.svg';
 const logoMenu = 'https://kbsb.app/assets/svg/icon_hamburger.svg';
 const title = 'kbsb GIF Creator';
 const subTitle = 'Create an animated GIF from still images';
+const placeholder = 'https://kbsb.app/assets/images/image-placeholder-grey-400px.png';
 
 function App() {
+	// global state for the files
+	const [files, setFiles] = useState([]);
+
 	return (
 		<div className="App">
 			<NavHeader urlLogo={logo} altLogo="Kaboom Shebang" urlMenu={logoMenu} />
-			<Title title={title} subTitle={subTitle}></Title>
+			<UploadStep title={title} subTitle={subTitle} filesFunc={setFiles}></UploadStep>
+
+			{/* output the list of files */}
+			{console.log(files)}
 
 			{/* image sequence step */}
 			<StepSection>
@@ -43,22 +51,10 @@ function App() {
 					description="Drag and drop to change the order"
 				></StepDescription>
 				<ImageSeq>
-					<Image
-						url="https://kbsb.app/assets/images/image-placeholder-grey-400px.png"
-						alt="Test image"
-					></Image>
-					<Image
-						url="https://kbsb.app/assets/images/image-placeholder-grey-400px.png"
-						alt="Test image"
-					></Image>
-					<Image
-						url="https://kbsb.app/assets/images/image-placeholder-grey-400px.png"
-						alt="Test image"
-					></Image>
-					<Image
-						url="https://kbsb.app/assets/images/image-placeholder-grey-400px.png"
-						alt="Test image"
-					></Image>
+					<Image url={placeholder} alt="Test image"></Image>
+					<Image url={placeholder} alt="Test image"></Image>
+					<Image url={placeholder} alt="Test image"></Image>
+					<Image url={placeholder} alt="Test image"></Image>
 				</ImageSeq>
 				<StepDescription
 					title="Enter the output size of the GIF animation"
