@@ -8,7 +8,7 @@ class Slider extends React.Component {
 	}
 
 	handleFunc(e) {
-		this.props.valueFunc(e.target.value);
+		this.props.valueFunc(e.target.valueAsNumber);
 	}
 
 	render() {

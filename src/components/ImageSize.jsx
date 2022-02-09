@@ -11,13 +11,13 @@ class ImageSize extends React.Component {
 			// pass a new object to the setState function
 			// passing a reference does not trigger a re-render
 			this.props.sizeFunc({
-				width: e.target.value,
+				width: e.target.valueAsNumber,
 				height: this.props.sizeState.height,
 			});
 		} else if (this.props.size === 'height') {
 			this.props.sizeFunc({
 				width: this.props.sizeState.width,
-				height: e.target.value,
+				height: e.target.valueAsNumber,
 			});
 		}
 	}
