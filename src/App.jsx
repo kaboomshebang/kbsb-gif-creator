@@ -32,10 +32,7 @@ function App() {
 	// global state for the files
 	const [files, setFiles] = useState([]);
 	// state for the image sequence
-	const [size, setSize] = useState({
-		width: 300,
-		height: 300,
-	});
+	const [size, setSize] = useState({});
 
 	const Images = () => {
 		if (files.length > 0) {
@@ -69,8 +66,11 @@ function App() {
 					title="Enter the output size of the GIF animation"
 					description="Default values are based on the input images"
 				></StepDescription>
-				<ImageSize size="width" color="#F0DBC7"></ImageSize>
-				<ImageSize size="height" color="#F0DBC7"></ImageSize>
+
+				{console.log(size.width)}
+				{console.log(size.height)}
+				<ImageSize size="width" sizeFunc={setSize} sizeState={size}></ImageSize>
+				<ImageSize size="height" sizeFunc={setSize} sizeState={size}></ImageSize>
 			</StepSection>
 
 			{/* GIF/animation properties step */}
@@ -100,13 +100,12 @@ function App() {
 				<StepDescription title="Loop" description="How many times should the animation loop."></StepDescription>
 				<div className="flex row space-x-2">
 					<Button label="Forever"></Button>
-					<Button label="1 Loop"></Button>
-					<Button label="2 Loops"></Button>
-					<Button label="3 Loops"></Button>
+					<Button label="1x"></Button>
+					<Button label="3x"></Button>
 				</div>
 				<StepDescription
 					title="Export"
-					description="Done! Click export to start the process."
+					description="Done! Click generate to start the process."
 				></StepDescription>
 				<Button label="🎬 Generate GIF" color="#C4CFBE"></Button>
 			</StepSection>
