@@ -30,9 +30,9 @@ const placeholder = 'https://kbsb.app/assets/images/image-placeholder-grey-400px
 function App() {
 	// component states
 	const [files, setFiles] = useState([]);
-	const [size, setSize] = useState({});
-	const [duration, setDuration] = useState();
-	const [quality, setQuality] = useState();
+	const [size, setSize] = useState({ width: 1000, height: 1000 });
+	const [duration, setDuration] = useState(2);
+	const [quality, setQuality] = useState(2);
 	const [loop, setLoop] = useState(0);
 
 	const Images = () => {

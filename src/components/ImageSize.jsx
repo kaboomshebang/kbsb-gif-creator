@@ -37,7 +37,7 @@ class ImageSize extends React.Component {
 					min="0"
 					max="9999"
 					step="1"
-					defaultValue="300"
+					defaultValue="1000"
 					onChange={this.handleInput}
 				/>
 				<span className="pl-2">pixels</span>
