@@ -1,6 +1,22 @@
 import React from 'react';
 
 class ImageSize extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleInput = this.handleInput.bind(this);
+		// this.state = {};
+	}
+
+	handleInput(e) {
+		if (this.props.size === 'width') {
+			this.props.sizeState.width = e.target.value;
+		} else if (this.props.size === 'height') {
+			this.props.sizeState.height = e.target.value;
+		}
+		this.props.sizeFunc(this.props.sizeState);
+		// console.log(this.props.sizeState);
+	}
+
 	render() {
 		const style = {
 			backgroundColor: this.props.color,
@@ -8,7 +24,7 @@ class ImageSize extends React.Component {
 
 		return (
 			<div className="py-2">
-				<span className="inline-block w-14 text-left">{this.props.size}</span>
+				<span className="inline-block w-16 text-left">{this.props.size}</span>
 				<input
 					style={style}
 					type="number"
@@ -17,6 +33,7 @@ class ImageSize extends React.Component {
 					max="9999"
 					step="1"
 					defaultValue="300"
+					onChange={this.handleInput}
 				/>
 				<span className="pl-2">pixels</span>
 			</div>
