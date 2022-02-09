@@ -24,6 +24,7 @@ import Export from './components/Export';
 // component props
 const logo = 'https://kbsb.app/assets/svg/kaboom_shebang_logo.svg';
 const logoMenu = 'https://kbsb.app/assets/svg/icon_hamburger.svg';
+const logoUrl = 'https://www.kaboomshebang.com';
 const title = 'kbsb GIF Creator';
 const subTitle = 'Create an animated GIF from still images';
 const placeholder = 'https://kbsb.app/assets/images/image-placeholder-grey-400px.png';
@@ -46,7 +47,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<NavHeader urlLogo={logo} altLogo="Kaboom Shebang" urlMenu={logoMenu} />
+			<NavHeader logoUrl={logoUrl} logoIcon={logo} logoIconAlt="Kaboom Shebang" menuIcon={logoMenu} />
 			<UploadStep title={title} subTitle={subTitle} filesFunc={setFiles}></UploadStep>
 
 			{/* image sequence step */}
