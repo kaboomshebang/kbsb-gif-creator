@@ -48,9 +48,6 @@ function App() {
 			<NavHeader urlLogo={logo} altLogo="Kaboom Shebang" urlMenu={logoMenu} />
 			<UploadStep title={title} subTitle={subTitle} filesFunc={setFiles}></UploadStep>
 
-			{/* output the list of files */}
-			{console.log(files)}
-
 			{/* image sequence step */}
 			<StepSection>
 				<StepHeader>
@@ -67,9 +64,6 @@ function App() {
 					title="Enter the output size of the GIF animation"
 					description="Default values are based on the input images"
 				></StepDescription>
-
-				{size.height}
-				{size.width}
 				<ImageSize size="width" sizeFunc={setSize} sizeState={size}></ImageSize>
 				<ImageSize size="height" sizeFunc={setSize} sizeState={size}></ImageSize>
 			</StepSection>
