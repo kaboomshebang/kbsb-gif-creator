@@ -19,6 +19,7 @@ import ImageSize from './components/ImageSize';
 
 import Slider from './components/Slider';
 import Loops from './components/Loops';
+import Export from './components/Export';
 
 // component props
 const logo = 'https://kbsb.app/assets/svg/kaboom_shebang_logo.svg';
@@ -109,9 +110,14 @@ function App() {
 					title="Export"
 					description="Done! Click generate to start the process."
 				></StepDescription>
-				<Button label="" color="#C4CFBE">
-					🎬 Generate GIF
-				</Button>
+
+				<Export
+					images={files}
+					width={size.width}
+					height={size.height}
+					duration={duration}
+					quality={quality}
+				></Export>
 			</StepSection>
 
 			<Footer />
