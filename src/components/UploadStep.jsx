@@ -4,7 +4,6 @@ import StepNumber from './StepNumber';
 
 import UploadModal from './UploadModal';
 
-const button = 'Upload images';
 const color = '#77A5A5';
 
 class UploadStep extends React.Component {
@@ -30,7 +29,7 @@ class UploadStep extends React.Component {
 				<h2 className="text-gray-400 text-center">{this.props.subTitle}</h2>
 				<div className="flex row justify-center space-x-2 p-5">
 					<StepNumber color={color} number="1"></StepNumber>
-					<Button label={button} btnClick={this.toggleModal}></Button>
+					<Button btnClick={this.toggleModal}>Upload images</Button>
 				</div>
 				{this.state.showModal && <UploadModal btnClick={this.toggleModal} filesFunc={this.props.filesFunc} />}
 			</section>
