@@ -4,17 +4,22 @@ class ImageSize extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleInput = this.handleInput.bind(this);
-		// this.state = {};
 	}
 
 	handleInput(e) {
 		if (this.props.size === 'width') {
-			this.props.sizeState.width = e.target.value;
+			// pass a new object to the setState function
+			// passing a reference does not trigger a re-render
+			this.props.sizeFunc({
+				width: e.target.value,
+				height: this.props.sizeState.height,
+			});
 		} else if (this.props.size === 'height') {
-			this.props.sizeState.height = e.target.value;
+			this.props.sizeFunc({
+				width: this.props.sizeState.width,
+				height: e.target.value,
+			});
 		}
-		this.props.sizeFunc(this.props.sizeState);
-		// console.log(this.props.sizeState);
 	}
 
 	render() {

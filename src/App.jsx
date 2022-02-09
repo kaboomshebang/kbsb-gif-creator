@@ -1,6 +1,4 @@
 import { useState } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
 
 import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
@@ -29,9 +27,8 @@ const subTitle = 'Create an animated GIF from still images';
 const placeholder = 'https://kbsb.app/assets/images/image-placeholder-grey-400px.png';
 
 function App() {
-	// global state for the files
+	// component states
 	const [files, setFiles] = useState([]);
-	// state for the image sequence
 	const [size, setSize] = useState({});
 
 	const Images = () => {
@@ -67,8 +64,8 @@ function App() {
 					description="Default values are based on the input images"
 				></StepDescription>
 
-				{console.log(size.width)}
-				{console.log(size.height)}
+				{size.height}
+				{size.width}
 				<ImageSize size="width" sizeFunc={setSize} sizeState={size}></ImageSize>
 				<ImageSize size="height" sizeFunc={setSize} sizeState={size}></ImageSize>
 			</StepSection>
