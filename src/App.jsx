@@ -30,6 +30,8 @@ function App() {
 	// component states
 	const [files, setFiles] = useState([]);
 	const [size, setSize] = useState({});
+	const [duration, setDuration] = useState();
+	const [quality, setQuality] = useState();
 
 	const Images = () => {
 		if (files.length > 0) {
@@ -80,12 +82,20 @@ function App() {
 					title="Frameduration"
 					description="The amount of time (in sec.) to stay on a frame (min: 1s, max 5s)."
 				></StepDescription>
-				<Slider min="1" max="5" step="0.5" default="1.5" unit="seconds"></Slider>
+				<Slider
+					valueFunc={setDuration}
+					valueState={duration}
+					min="1"
+					max="5"
+					step="0.5"
+					default="1.5"
+					unit="seconds"
+				></Slider>
 				<StepDescription
 					title="Image quality"
 					description="A lower threshold value gives better quality results, but takes longer to generate (default: 2)."
 				></StepDescription>
-				<Slider min="1" max="5" step="1" default="2"></Slider>
+				<Slider valueFunc={setQuality} valueState={quality} min="1" max="5" step="1" default="2"></Slider>
 			</StepSection>
 
 			{/* Export sequence step */}
