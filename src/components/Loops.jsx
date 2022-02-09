@@ -50,12 +50,6 @@ class Loops extends React.Component {
 				<Button active={this.state[0]} id="loop_0" btnClick={this.handleClick}>
 					Forever
 				</Button>
-				<Button active={this.state[1]} id="loop_1" btnClick={this.handleClick}>
-					1x
-				</Button>
-				<Button active={this.state[3]} id="loop_3" btnClick={this.handleClick}>
-					3x
-				</Button>
 			</div>
 		);
 	}

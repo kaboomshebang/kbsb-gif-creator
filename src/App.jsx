@@ -106,7 +106,10 @@ function App() {
 					<StepNumber number="4" color="#C89E9E"></StepNumber>
 					<StepTitle title="Export sequence to GIF"></StepTitle>
 				</StepHeader>
-				<StepDescription title="Loop" description="How many times should the animation loop."></StepDescription>
+				<StepDescription
+					title="Loop"
+					description="How many times should the animation loop. (Currently only possible to loop forever.)"
+				></StepDescription>
 				<Loops valueState={loop} loopFunc={setLoop}></Loops>
 				<StepDescription
 					title="Export"
