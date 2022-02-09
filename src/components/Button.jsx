@@ -7,8 +7,15 @@ class Button extends React.Component {
 		};
 
 		return (
-			<button style={style} className="text-base font-medium bg-gray-300 px-7 py-2" onClick={this.props.btnClick}>
-				{this.props.label}
+			<button
+				id={this.props.id}
+				style={style}
+				className={`text-base font-medium bg-gray-300 px-7 py-2 ${
+					this.props.active ? 'bg-gray-700 text-white' : ''
+				}`}
+				onClick={this.props.btnClick}
+			>
+				{this.props.children}
 			</button>
 		);
 	}
