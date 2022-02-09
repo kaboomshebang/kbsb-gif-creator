@@ -18,6 +18,7 @@ import Image from './components/Image';
 import ImageSize from './components/ImageSize';
 
 import Slider from './components/Slider';
+import Loops from './components/Loops';
 
 // component props
 const logo = 'https://kbsb.app/assets/svg/kaboom_shebang_logo.svg';
@@ -32,6 +33,7 @@ function App() {
 	const [size, setSize] = useState({});
 	const [duration, setDuration] = useState();
 	const [quality, setQuality] = useState();
+	const [loop, setLoop] = useState(0);
 
 	const Images = () => {
 		if (files.length > 0) {
@@ -105,16 +107,14 @@ function App() {
 					<StepTitle title="Export sequence to GIF"></StepTitle>
 				</StepHeader>
 				<StepDescription title="Loop" description="How many times should the animation loop."></StepDescription>
-				<div className="flex row space-x-2">
-					<Button label="Forever"></Button>
-					<Button label="1x"></Button>
-					<Button label="3x"></Button>
-				</div>
+				<Loops valueState={loop} loopFunc={setLoop}></Loops>
 				<StepDescription
 					title="Export"
 					description="Done! Click generate to start the process."
 				></StepDescription>
-				<Button label="🎬 Generate GIF" color="#C4CFBE"></Button>
+				<Button label="" color="#C4CFBE">
+					🎬 Generate GIF
+				</Button>
 			</StepSection>
 
 			<Footer />
