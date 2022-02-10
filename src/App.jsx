@@ -51,7 +51,20 @@ function App() {
 				></Image>
 			));
 		} else {
-			return <Image url={placeholder} alt="Test image"></Image>;
+			return <Image url={placeholder} alt="Placeholder"></Image>;
+		}
+	};
+
+	// calculate the width of the image based on the avarage aspect ratio
+	const DefWidth = () => {
+		let counter = 0;
+
+		for (let index = 0; index < files.length; index++) {
+			counter++;
+			if (files.length === ratios.length && counter == files.length) {
+				const average = ratios.reduce((prev, curr) => (prev + curr) / 2);
+				return Math.floor(1000 * average);
+			}
 		}
 	};
 
@@ -76,8 +89,8 @@ function App() {
 					title="Enter the output size of the GIF animation"
 					description="The width value is based on the average aspect ratio."
 				></StepDescription>
-				<ImageSize size="width" sizeFunc={setSize} sizeState={size}></ImageSize>
-				<ImageSize size="height" sizeFunc={setSize} sizeState={size}></ImageSize>
+				<ImageSize size="width" sizeFunc={setSize} sizeState={size} defValue={DefWidth()}></ImageSize>
+				<ImageSize size="height" sizeFunc={setSize} sizeState={size} defValue={size.height}></ImageSize>
 			</StepSection>
 
 			{/* GIF/animation properties step */}
