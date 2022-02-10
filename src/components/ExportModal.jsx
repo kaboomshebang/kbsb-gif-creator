@@ -40,8 +40,20 @@ class ExportModal extends React.Component {
 					</header>
 					<article className="flex flex-col items-center h-full p-5">
 						<img src={this.props.image} alt="GIF" />
-						<a download href={this.props.image} className="cursor-pointer px-5 py-2 mt-6 bg-gray-300">
+						<a
+							download="kaboom.gif"
+							href={this.props.image}
+							className="cursor-pointer px-5 py-2 mt-6 bg-gray-300"
+						>
 							🎬 Download GIF
+						</a>
+						<a
+							href={this.props.image}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="cursor-pointer px-5 py-2 mt-6 bg-gray-100"
+						>
+							Open GIF in new tab
 						</a>
 					</article>
 				</section>
