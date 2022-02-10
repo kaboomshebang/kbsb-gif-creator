@@ -42,7 +42,7 @@ class Export extends React.Component {
 		};
 
 		if (gifshot.isExistingImagesGIFSupported()) {
-			console.log('Current browser supports all the gifshot options');
+			console.log('Browser supports all the gifshot options');
 			console.log('Start process...');
 
 			gifshot.createGIF(props, (obj) => {
@@ -59,7 +59,7 @@ class Export extends React.Component {
 				}
 			});
 		} else {
-			console.log('Current browser does NOT support all the gifshot options');
+			console.log('Browser does NOT support all the gifshot options');
 			this.setState({ errorNoSupport: true });
 		}
 	}
