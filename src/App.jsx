@@ -73,7 +73,7 @@ function App() {
 				<ImageSeq>{Images()}</ImageSeq>
 				<StepDescription
 					title="Enter the output size of the GIF animation"
-					description="Default values are based on the input images"
+					description="The width value is based on the average aspect ratio."
 				></StepDescription>
 				<ImageSize size="width" sizeFunc={setSize} sizeState={size}></ImageSize>
 				<ImageSize size="height" sizeFunc={setSize} sizeState={size}></ImageSize>
@@ -100,7 +100,7 @@ function App() {
 				></Slider>
 				<StepDescription
 					title="Image quality"
-					description="A lower threshold value gives better quality results, but takes longer to generate (default: 2)."
+					description="A lower threshold value gives better quality results, but takes longer to generate (default: 4)."
 				></StepDescription>
 				<Slider valueFunc={setQuality} valueState={quality} min="1" max="5" step="1" default="4"></Slider>
 			</StepSection>

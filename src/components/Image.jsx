@@ -15,8 +15,7 @@ class Image extends React.Component {
 }
 
 Image.defaultProps = {
-	file: 'imageName.ext',
-	res: '1200 x 800px',
+	fileName: 'No images uploaded',
 };
 
 export default Image;
