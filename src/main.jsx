@@ -1,6 +1,3 @@
-// import gifshot first
-import './lib/gifshot';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
