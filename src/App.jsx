@@ -36,6 +36,7 @@ function App() {
 	const [duration, setDuration] = useState(2);
 	const [quality, setQuality] = useState(4);
 	const [loop, setLoop] = useState(0);
+	const [ratios, setRatios] = useState([]);
 
 	const Images = () => {
 		if (files.length > 0) {
