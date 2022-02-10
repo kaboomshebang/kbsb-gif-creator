@@ -32,17 +32,27 @@ class Export extends React.Component {
 			loop: 3,
 		};
 
-		gifshot.createGIF(props, (obj) => {
-			if (!obj.error) {
-				console.log('No error');
-				this.setState({ showExport: true, image: obj.image });
-			} else if (this.props.images.length === 0) {
-				console.log('No images selected');
-				this.setState({ errorNoImages: true });
-			} else {
-				console.log('Error');
-			}
-		});
+		if (gifshot.isExistingImagesGIFSupported()) {
+			console.log('Current browser supports all the gifshot options');
+			console.log('Start process...');
+
+			gifshot.createGIF(props, (obj) => {
+				if (!obj.error) {
+					console.log('No error');
+					this.setState({ showExport: true, image: obj.image });
+				} else if (this.props.images.length === 0) {
+					console.log('No images selected');
+					this.setState({ errorNoImages: true });
+				} else if (gifshot.isSupported()) {
+					console.log('is');
+				} else {
+					console.log('Error');
+				}
+			});
+		} else {
+			console.log('Current browser does NOT support all the gifshot options');
+			this.setState({ errorNoSupport: true });
+		}
 	}
 
 	render() {
@@ -57,6 +67,7 @@ class Export extends React.Component {
 					''
 				)}
 				{this.state.errorNoImages ? <ExportError error="❌ No images selected in step 1" /> : ''}
+				{this.state.errorNoSupport ? <ExportError error="❌ Your browser is not supported" /> : ''}
 			</>
 		);
 	}
