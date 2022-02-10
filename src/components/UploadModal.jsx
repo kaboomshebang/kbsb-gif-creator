@@ -51,32 +51,33 @@ class UploadModal extends React.Component {
 
 		// store the uploaded items
 		let items = [];
+		let itemURLs = [];
 
-		// if browser supports DataTransferItemList interface
-		if (e.dataTransfer.items) {
-			for (const i of e.dataTransfer.items) {
-				if (i.kind === 'file') {
-					items = [...items, URL.createObjectURL(i.getAsFile())];
-				}
-			}
-			this.props.filesFunc(items);
-		} else {
-			// fallback
-			for (const i of e.dataTransfer.files) {
-				items = [...items, URL.createObjectURL(i)];
-			}
-			this.props.filesFunc(items);
+		for (const i of e.dataTransfer.files) {
+			items = [...items, i.name];
+			itemURLs = [...itemURLs, URL.createObjectURL(i)];
 		}
+		this.props.filesFunc(itemURLs);
+		this.storeUploads(items);
 	}
 
 	selectedImage(e) {
-		console.log(e.target.files);
 		let items = [];
+		let itemURLs = [];
 
 		for (const i of e.target.files) {
-			items = [...items, URL.createObjectURL(i)];
+			items = [...items, i.name];
+			itemURLs = [...itemURLs, URL.createObjectURL(i)];
 		}
-		this.props.filesFunc(items);
+		this.props.filesFunc(itemURLs);
+		this.storeUploads(items);
+	}
+
+	storeUploads(items) {
+		this.setState({
+			uploadedImages: items,
+			showUploads: true,
+		});
 	}
 
 	render() {
@@ -149,6 +150,17 @@ class UploadModal extends React.Component {
 							</label>
 						</div>
 					</article>
+					{this.state.showUploads ? (
+						<div className="absolute bottom-6 right-5 p-6 bg-white border-2 border-green-700 shadow-lg">
+							<ul>
+								{this.state.uploadedImages.map((name, index) => (
+									<li key={index}>✔ {name}</li>
+								))}
+							</ul>
+						</div>
+					) : (
+						''
+					)}
 				</section>
 			</>
 		);
