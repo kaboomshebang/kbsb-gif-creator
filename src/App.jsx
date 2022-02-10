@@ -34,7 +34,7 @@ function App() {
 	const [files, setFiles] = useState([]);
 	const [size, setSize] = useState({ width: 1000, height: 1000 });
 	const [duration, setDuration] = useState(2);
-	const [quality, setQuality] = useState(2);
+	const [quality, setQuality] = useState(4);
 	const [loop, setLoop] = useState(0);
 
 	const Images = () => {
@@ -102,7 +102,7 @@ function App() {
 					title="Image quality"
 					description="A lower threshold value gives better quality results, but takes longer to generate (default: 2)."
 				></StepDescription>
-				<Slider valueFunc={setQuality} valueState={quality} min="1" max="5" step="1" default="2"></Slider>
+				<Slider valueFunc={setQuality} valueState={quality} min="1" max="5" step="1" default="4"></Slider>
 			</StepSection>
 
 			{/* Export sequence step */}
