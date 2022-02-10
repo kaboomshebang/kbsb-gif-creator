@@ -3,6 +3,8 @@ import Button from './Button';
 import ExportModal from './ExportModal';
 import ExportError from './ExportError';
 
+import gifshot from 'gifshot';
+
 class Export extends React.Component {
 	constructor(props) {
 		super(props);

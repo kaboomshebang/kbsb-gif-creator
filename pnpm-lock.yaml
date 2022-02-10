@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@vitejs/plugin-react': ^1.0.7
   autoprefixer: ^10.4.2
+  gifshot: ^0.4.5
   postcss: ^8.4.5
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -10,6 +11,7 @@ specifiers:
   vite: ^2.7.2
 
 dependencies:
+  gifshot: 0.4.5
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
 
@@ -769,6 +771,10 @@ packages:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
     dev: true
+
+  /gifshot/0.4.5:
+    resolution: {integrity: sha1-48tXAgOjsTn/MGnXV4CYopwDsPg=}
+    dev: false
 
   /glob-parent/5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
