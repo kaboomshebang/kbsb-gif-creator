@@ -7,25 +7,25 @@ Generate an animated GIF from a set of images. Built with React and Yahoo Gifsho
 - [X] change nav sizes
 - [X] Fix mobile bug. Solution: .js lib import failed after deploy
 - [ ] add components
-    + [ ] Add pop-up to UploadModal displaying the filenames that are uploaded by the user
+    - [X] Add pop-up to UploadModal displaying the filenames that are uploaded by the user
     - [ ] image sequence
-        + [ ] convert image state to object: name, order, size, filetype, etc
-            * [ ] add image ordering functionality
-            * [ ] add the imagename
-        + [ ] add logic to automatically set the resolution based on the input images
-        + [ ] add remove image button
+        - [ ] convert image state to object: name, order, size, filetype, etc
+            - [ ] add image ordering functionality
+            - [X] add the imagename
+        - [X] add logic to automatically set the resolution based on the input images
+        - [ ] add remove image button
     - [X] gif properties
-        + [X] create slider component
+        - [X] create slider component
     - [X] export GIF
     - [X] generate GIF
-        - [ ] add processing icon
+        - [X] add processing icon
     - [X] create modal component to display output
-        + [X] Download button
-        + [ ] Fix download button on mobile
+        - [X] Download button
+        - [X] Fix download button on mobile
 - [X] add state to components
 - [X] setup all logic to generate GIF
 - [X] connect components to the GIFshot js lib
-- [ ] Add favicon and homescreen icon
+- [X] Add favicon and homescreen icon
 
 ## Retrospective
 
