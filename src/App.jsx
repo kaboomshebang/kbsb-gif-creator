@@ -39,7 +39,16 @@ function App() {
 
 	const Images = () => {
 		if (files.length > 0) {
-			return files.map((f, index) => <Image key={`img_${index}`} url={f} alt="Test image"></Image>);
+			return files.map((f, index) => (
+				<Image
+					key={`img_${index}`}
+					url={f[0]}
+					fileName={f[1]}
+					alt="Uploaded"
+					ratioState={ratios}
+					ratioFunc={setRatios}
+				></Image>
+			));
 		} else {
 			return <Image url={placeholder} alt="Test image"></Image>;
 		}

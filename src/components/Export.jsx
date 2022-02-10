@@ -25,11 +25,16 @@ class Export extends React.Component {
 			generating: true,
 		});
 
+		// get the URLs from the images array
+		const images = this.props.images.map((e) => {
+			return e[0];
+		});
+
 		// https://github.com/yahoo/gifshot#options
 		const props = {
 			gifWidth: this.props.width,
 			gifHeight: this.props.height,
-			images: this.props.images,
+			images: images,
 			frameDuration: this.props.duration * 10, // The amount of time (10 = 1s) to stay on each frame
 			sampleInterval: this.props.quality, // quality setting, lower is better quality // lowest is 1
 			numWorkers: 6, // number of web workers for processing frames

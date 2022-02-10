@@ -50,32 +50,32 @@ class UploadModal extends React.Component {
 		});
 
 		// store the uploaded items
-		let items = [];
-		let itemURLs = [];
+		let fileNames = [];
+		let files = [];
 
 		for (const i of e.dataTransfer.files) {
-			items = [...items, i.name];
-			itemURLs = [...itemURLs, URL.createObjectURL(i)];
+			fileNames = [...fileNames, i.name];
+			files = [...files, [URL.createObjectURL(i), i.name]];
 		}
-		this.props.filesFunc(itemURLs);
-		this.storeUploads(items);
+		this.props.filesFunc(files);
+		this.saveFileNames(fileNames);
 	}
 
 	selectedImage(e) {
-		let items = [];
-		let itemURLs = [];
+		let fileNames = [];
+		let files = [];
 
 		for (const i of e.target.files) {
-			items = [...items, i.name];
-			itemURLs = [...itemURLs, URL.createObjectURL(i)];
+			fileNames = [...fileNames, i.name];
+			files = [...files, [URL.createObjectURL(i), i.name]];
 		}
-		this.props.filesFunc(itemURLs);
-		this.storeUploads(items);
+		this.props.filesFunc(files);
+		this.saveFileNames(fileNames);
 	}
 
-	storeUploads(items) {
+	saveFileNames(fileNames) {
 		this.setState({
-			uploadedImages: items,
+			uploadedImages: fileNames,
 			showUploads: true,
 		});
 	}
