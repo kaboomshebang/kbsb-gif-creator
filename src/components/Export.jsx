@@ -11,7 +11,7 @@ class Export extends React.Component {
 		this.generate = this.generate.bind(this);
 		this.closeExport = this.closeExport.bind(this);
 
-		this.state = { showExport: false };
+		this.state = { showExport: false, generating: false };
 	}
 
 	closeExport() {
@@ -21,6 +21,10 @@ class Export extends React.Component {
 	}
 
 	generate() {
+		this.setState({
+			generating: true,
+		});
+
 		// https://github.com/yahoo/gifshot#options
 		const props = {
 			gifWidth: this.props.width,
@@ -39,7 +43,7 @@ class Export extends React.Component {
 			gifshot.createGIF(props, (obj) => {
 				if (!obj.error) {
 					console.log('No error');
-					this.setState({ showExport: true, image: obj.image });
+					this.setState({ showExport: true, image: obj.image, generating: false });
 				} else if (this.props.images.length === 0) {
 					console.log('No images selected');
 					this.setState({ errorNoImages: true });
@@ -59,7 +63,7 @@ class Export extends React.Component {
 		return (
 			<>
 				<Button btnClick={this.generate} color="#C4CFBE">
-					🎬 Generate GIF
+					{this.state.generating ? '🦾 Generating...' : '🎬 Generate GIF'}
 				</Button>
 				{this.state.showExport ? (
 					<ExportModal btnClick={this.closeExport} image={this.state.image}></ExportModal>
