@@ -43,11 +43,14 @@ function App() {
 			return files.map((f, index) => (
 				<Image
 					key={`img_${index}`}
+					index={index}
 					url={f[0]}
 					fileName={f[1]}
 					alt="Uploaded"
 					ratioState={ratios}
 					ratioFunc={setRatios}
+					filesState={files}
+					filesFunc={setFiles}
 				></Image>
 			));
 		} else {
