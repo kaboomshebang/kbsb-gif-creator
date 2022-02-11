@@ -2,6 +2,17 @@
 
 Generate an animated GIF from a set of images. Built with React and Yahoo Gifshot. [Figma design](https://www.figma.com/file/ijucLyYpmmcA8liD3j3iY2/kbsb-project-0003-gif_creator?node-id=0%3A1)
 
+## Build
+
+```bash
+# install dependencies
+npm install
+pnpm install
+# run dev server
+npm run dev
+pnpm run dev
+```
+
 ## Todo
 
 - [X] change nav sizes
@@ -31,10 +42,10 @@ Generate an animated GIF from a set of images. Built with React and Yahoo Gifsho
 
 - Use `.bind(this)` in the constructor to set the correct execution context for methods
 - References to passed down state don't re-render. `useState` only triggers a re-render with new values. 
-- Splitting `useState` in seperate variables is easier to setup then combining multiple properties in one object/array.
-- Perhaps only use function components instead of class-compoents. (So managing state accross components is easier?)
-- Using more generic Git branchenames ("add-state-to-components" instead of "add-state-to-export-component") would have worked better when the application is still under construction. Specific feature branches perhaps are better when the application is actually working and new features are smaller.
-- Triggering a CSS transition with a `setTimeout` is probably something that can be improved.
+- Splitting `useState` in seperate single variables is easier to setup then combining multiple properties in one object/array. (Or maybe I'm unaware of some kind of trick 🤨)
+- Perhaps only use function-components instead of class-compoents. (So managing state accross components is easier?)
+- Using more generic Git branchenames ("add-state-to-components" instead of "add-state-to-export-component") would have worked better when the application is still under construction. Specific feature branches perhaps work better when the application is fully working and new features are smaller.
+- Triggering an unmount CSS transition with a `setTimeout` is probably something that can be improved.
 
 ## Gifshot
 
