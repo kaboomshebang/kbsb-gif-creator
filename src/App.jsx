@@ -61,7 +61,7 @@ function App() {
 
 		for (let index = 0; index < files.length; index++) {
 			counter++;
-			if (files.length === ratios.length && counter == files.length) {
+			if (files.length === ratios.length && counter === files.length) {
 				const average = ratios.reduce((prev, curr) => (prev + curr) / 2);
 				return Math.floor(1000 * average);
 			}
