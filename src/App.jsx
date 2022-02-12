@@ -84,7 +84,7 @@ function App() {
 				</StepHeader>
 				<StepDescription
 					title="Uploaded images"
-					description="Drag and drop to change the order"
+					description="Click on the image number to move the image to the right."
 				></StepDescription>
 				{/* place images */}
 				<ImageSeq>{Images()}</ImageSeq>
