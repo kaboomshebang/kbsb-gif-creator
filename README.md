@@ -17,14 +17,13 @@ pnpm run dev
 
 - [X] change nav sizes
 - [X] Fix mobile bug. Solution: .js lib import failed after deploy
-- [ ] add components
+- [X] add components
     - [X] Add pop-up to UploadModal displaying the filenames that are uploaded by the user
-    - [ ] image sequence
-        - [ ] convert image state to object: name, order, size, filetype, etc
-            - [ ] add image ordering functionality
-            - [X] add the imagename
+    - [X] image sequence
+        - [X] add image ordering functionality
+        - [X] add the imagename
         - [X] add logic to automatically set the resolution based on the input images
-        - [ ] add remove image button
+        - [X] add remove image button
     - [X] gif properties
         - [X] create slider component
     - [X] export GIF
@@ -37,9 +36,13 @@ pnpm run dev
 - [X] setup all logic to generate GIF
 - [X] connect components to the GIFshot js lib
 - [X] Add favicon and homescreen icon
+- [ ] Fix: width ratio calculation when re-ordering or re-moving
+- [ ] Improve: GIF export-modal on mobile (image ratio)
+- [ ] Improve: Add logic to lock the ratio between width and height. So that setting a custom height automatically sets the correct width. (Refactor the component hierarchy?)
 
 ## Retrospective
 
+- I would have probably changed the component structure in a way that would make state management easier. An "ImageSequence" component (step 2) that contains the child-components, so that for example image-size values are easier to manage. I could still use StepSection, StepHeader, etc, but then the 4 steps would have their own state.
 - Use `.bind(this)` in the constructor to set the correct execution context for methods
 - References to passed down state don't re-render. `useState` only triggers a re-render with new values. 
 - Splitting `useState` in seperate single variables is easier to setup then combining multiple properties in one object/array. (Or maybe I'm unaware of some kind of trick 🤨)
