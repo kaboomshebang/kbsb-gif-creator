@@ -87,14 +87,16 @@ class Image extends React.Component {
 				)}
 				<img ref={this.imgRef} className="w-full h-60 object-cover" src={this.props.url} alt={this.props.alt} />
 				<figcaption className="text-xs py-2 text-gray-400 text-center">
-					<div className="font-bold">{this.props.fileName}</div>
+					<div className="font-bold">📷 {this.props.fileName}</div>
 
 					{this.props.alt !== 'Placeholder' ? (
 						<div className="mt-2">
 							<div>
-								Res: {this.state.width} x {this.state.height}
+								width: {this.state.width}px
+								<br />
+								height: {this.state.height}px
 							</div>
-							<div>Aspect: {this.state.ratio}</div>
+							<div>ratio: {this.state.ratio} : 1</div>
 						</div>
 					) : (
 						''
