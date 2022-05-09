@@ -22,12 +22,12 @@ import Loops from './components/Loops';
 import Export from './components/Export';
 
 // component props
-const logo = 'https://kbsb.app/assets/svg/kaboom_shebang_logo.svg';
-const logoMenu = 'https://kbsb.app/assets/svg/icon_hamburger.svg';
+const logo = 'https://assets.kbsb.app/svg/kaboom_shebang_logo.svg';
+const logoMenu = 'https://assets.kbsb.app/svg/icon_hamburger.svg';
 const logoUrl = 'https://www.kaboomshebang.com';
 const title = 'kbsb GIF Creator';
 const subTitle = 'Create an animated GIF from still images';
-const placeholder = 'https://kbsb.app/assets/images/image-placeholder-grey-400px.png';
+const placeholder = 'https://assets.kbsb.app/images/image-placeholder-grey-400px.png';
 
 function App() {
 	// component states

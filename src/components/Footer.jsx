@@ -9,7 +9,7 @@ class Footer extends React.Component {
 				</a>
 				<img
 					className="fixed w-20 bottom-5 right-0"
-					src="https://kbsb.app/assets/svg/shebang_3d_for_web.svg"
+					src="https://assets.kbsb.app/svg/shebang_3d_for_web.svg"
 					alt="Shebang"
 				/>
 			</footer>

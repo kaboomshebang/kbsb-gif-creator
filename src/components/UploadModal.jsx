@@ -94,11 +94,11 @@ class UploadModal extends React.Component {
 				>
 					<header className="flex justify-between bg-black p-2">
 						<span className="flex items-center">
-							<img src="https://kbsb.app/assets/svg/shebang_grey_small.svg" alt="Shebang" />
+							<img src="https://assets.kbsb.app/svg/shebang_grey_small.svg" alt="Shebang" />
 							<span className="text-white text-center font-medium ml-2">Upload images</span>
 						</span>
 						<button onClick={this.props.btnClick}>
-							<img src="https://kbsb.app/assets/svg/icon_cross_white.svg" alt="Cross" />
+							<img src="https://assets.kbsb.app/svg/icon_cross_white.svg" alt="Cross" />
 						</button>
 					</header>
 					<article className="flex flex-col items-center h-full p-5">
@@ -117,7 +117,7 @@ class UploadModal extends React.Component {
 							<div className="pointer-events-none flex flex-col items-center">
 								<img
 									className={`pointer-events-none w-14 ${this.state.drag ? 'animate-bounce' : ''}`}
-									src="https://kbsb.app/assets/svg/icon_arrow_down_grey.svg"
+									src="https://assets.kbsb.app/svg/icon_arrow_down_grey.svg"
 									alt="Arrow"
 								/>
 								<span className="pointer-events-none text-xl text-white text-center font-normal mt-4">
@@ -130,7 +130,7 @@ class UploadModal extends React.Component {
 								<div className="flex flex-col items-center">
 									<img
 										className="w-14"
-										src="https://kbsb.app/assets/svg/icon_file_upload_black.svg"
+										src="https://assets.kbsb.app/svg/icon_file_upload_black.svg"
 										alt="File"
 									/>
 									<div>

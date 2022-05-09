@@ -77,7 +77,7 @@ class Image extends React.Component {
 						<button className="w-8 p-2 bg-gray-700/75 rounded-md" onClick={this.removeImage}>
 							<img
 								className="drop-shadow-md"
-								src="https://kbsb.app/assets/svg/icon_cross_white.svg"
+								src="https://assets.kbsb.app/svg/icon_cross_white.svg"
 								alt="Cross"
 							/>
 						</button>

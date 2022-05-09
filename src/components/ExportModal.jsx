@@ -31,11 +31,11 @@ class ExportModal extends React.Component {
 				>
 					<header className="flex justify-between bg-black p-2">
 						<span className="flex items-center">
-							<img src="https://kbsb.app/assets/svg/shebang_grey_small.svg" alt="Shebang" />
+							<img src="https://assets.kbsb.app/svg/shebang_grey_small.svg" alt="Shebang" />
 							<span className="text-white font-medium ml-2">Generated GIF</span>
 						</span>
 						<button onClick={this.props.btnClick}>
-							<img src="https://kbsb.app/assets/svg/icon_cross_white.svg" alt="Cross" />
+							<img src="https://assets.kbsb.app/svg/icon_cross_white.svg" alt="Cross" />
 						</button>
 					</header>
 					<article className="flex flex-col items-center h-full p-5">
