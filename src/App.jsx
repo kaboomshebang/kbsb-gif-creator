@@ -5,8 +5,6 @@ import Footer from './components/Footer';
 
 import UploadStep from './components/UploadStep';
 
-import Button from './components/Button';
-
 import StepSection from './components/StepSection';
 import StepHeader from './components/StepHeader';
 import StepNumber from './components/StepNumber';
