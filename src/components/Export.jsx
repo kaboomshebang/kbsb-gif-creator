@@ -1,42 +1,37 @@
-import React from 'react';
+import { useState } from 'react';
+
 import Button from './Button';
 import ExportModal from './ExportModal';
 import ExportError from './ExportError';
 
 import gifshot from 'gifshot';
 
-class Export extends React.Component {
-	constructor(props) {
-		super(props);
-		this.generate = this.generate.bind(this);
-		this.closeExport = this.closeExport.bind(this);
+const Export = (props) => {
+	const [showExport, setShowExport] = useState(false);
+	const [generating, setGenerating] = useState(false);
+	const [errorNoImages, setErrorNoImages] = useState(false);
+	const [errorNoSupport, setErrorNoSupport] = useState(false);
+	const [image, setImage] = useState(null);
 
-		this.state = { showExport: false, generating: false };
-	}
+	const closeExport = () => {
+		setShowExport(false);
+	};
 
-	closeExport() {
-		this.setState({
-			showExport: false,
-		});
-	}
-
-	generate() {
-		this.setState({
-			generating: true,
-		});
+	const generate = () => {
+		setGenerating(true);
 
 		// get the URLs from the images array
-		const images = this.props.images.map((e) => {
+		const images = props.images.map((e) => {
 			return e[0];
 		});
 
 		// https://github.com/yahoo/gifshot#options
-		const props = {
-			gifWidth: this.props.width,
-			gifHeight: this.props.height,
+		const gifshotProps = {
+			gifWidth: props.width,
+			gifHeight: props.height,
 			images: images,
-			frameDuration: this.props.duration * 10, // The amount of time (10 = 1s) to stay on each frame
-			sampleInterval: this.props.quality, // quality setting, lower is better quality // lowest is 1
+			frameDuration: props.duration * 10, // The amount of time (10 = 1s) to stay on each frame
+			sampleInterval: props.quality, // quality setting, lower is better quality // lowest is 1
 			numWorkers: 6, // number of web workers for processing frames
 			loop: 3,
 		};
@@ -45,13 +40,17 @@ class Export extends React.Component {
 			console.log('Browser supports all the gifshot options');
 			console.log('Start process...');
 
-			gifshot.createGIF(props, (obj) => {
+			gifshot.createGIF(gifshotProps, (obj) => {
 				if (!obj.error) {
 					console.log('No error');
-					this.setState({ showExport: true, image: obj.image, generating: false });
-				} else if (this.props.images.length === 0) {
+
+					setShowExport(true);
+					setImage(obj.image);
+					setGenerating(false);
+				} else if (props.images.length === 0) {
 					console.log('No images selected');
-					this.setState({ errorNoImages: true });
+
+					setErrorNoImages(true);
 				} else if (gifshot.isSupported()) {
 					console.log('is');
 				} else {
@@ -60,26 +59,21 @@ class Export extends React.Component {
 			});
 		} else {
 			console.log('Browser does NOT support all the gifshot options');
-			this.setState({ errorNoSupport: true });
-		}
-	}
 
-	render() {
-		return (
-			<>
-				<Button btnClick={this.generate} color="#C4CFBE">
-					{this.state.generating ? '🦾 Generating...' : '🎬 Generate GIF'}
-				</Button>
-				{this.state.showExport ? (
-					<ExportModal btnClick={this.closeExport} image={this.state.image}></ExportModal>
-				) : (
-					''
-				)}
-				{this.state.errorNoImages ? <ExportError error="❌ No images selected in step 1" /> : ''}
-				{this.state.errorNoSupport ? <ExportError error="❌ Your browser is not supported" /> : ''}
-			</>
-		);
-	}
-}
+			setErrorNoSupport(true);
+		}
+	};
+
+	return (
+		<>
+			<Button btnClick={generate} color="#C4CFBE">
+				{generating ? '🦾 Generating...' : '🎬 Generate GIF'}
+			</Button>
+			{showExport && <ExportModal btnClick={closeExport} image={image}></ExportModal>}
+			{errorNoImages && <ExportError error="❌ No images selected in step 1" />}
+			{errorNoSupport && <ExportError error="❌ Your browser is not supported" />}
+		</>
+	);
+};
 
 export default Export;
