@@ -36,7 +36,8 @@ const App = () => {
 	const [loop, setLoop] = useState(0);
 	const [ratios, setRatios] = useState([]);
 
-	const Images = () => {
+	// render the list of images
+	const images = () => {
 		if (files.length > 0) {
 			return files.map((f, index) => (
 				<Image
@@ -90,7 +91,7 @@ const App = () => {
 					description="Click on the image number to move the image to the right."
 				></StepDescription>
 				{/* place images */}
-				<ImageSeq>{Images()}</ImageSeq>
+				<ImageSeq>{images()}</ImageSeq>
 				<StepDescription
 					title="Enter the output size of the GIF animation"
 					description="The width value is based on the average aspect ratio."
