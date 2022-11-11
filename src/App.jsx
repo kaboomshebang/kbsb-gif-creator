@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
@@ -58,17 +58,22 @@ const App = () => {
 	};
 
 	// calculate the width of the image based on the avarage aspect ratio
-	const DefWidth = () => {
+	const updateWidth = () => {
 		let counter = 0;
 
 		for (let index = 0; index < files.length; index++) {
 			counter++;
 			if (files.length === ratios.length && counter === files.length) {
 				const average = ratios.reduce((prev, curr) => (prev + curr) / 2);
-				return Math.floor(1000 * average);
+				setSize((prevState) => {
+					return { ...prevState, width: Math.floor(1000 * average) };
+				});
 			}
 		}
 	};
+
+	// update the width value (on file upload and after the ratios are calculated)
+	useEffect(updateWidth, [ratios]);
 
 	return (
 		<div className="App">
@@ -96,8 +101,18 @@ const App = () => {
 					title="Enter the output size of the GIF animation"
 					description="The width value is based on the average aspect ratio."
 				></StepDescription>
-				<ImageSize size="width" sizeFunc={setSize} sizeState={size} defValue={DefWidth()}></ImageSize>
-				<ImageSize size="height" sizeFunc={setSize} sizeState={size} defValue={size.height}></ImageSize>
+				<ImageSize
+					size="width"
+					sizeFunc={setSize}
+					sizeState={size}
+					value={size.width}
+				></ImageSize>
+				<ImageSize
+					size="height"
+					sizeFunc={setSize}
+					sizeState={size}
+					value={size.height}
+				></ImageSize>
 			</StepSection>
 
 			{/* GIF/animation properties step */}
@@ -161,6 +176,6 @@ const App = () => {
 			<Footer />
 		</div>
 	);
-}
+};
 
 export default App;
