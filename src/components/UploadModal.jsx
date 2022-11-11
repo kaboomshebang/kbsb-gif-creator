@@ -84,9 +84,7 @@ const UploadModal = (props) => {
 					>
 						<div className="pointer-events-none flex flex-col items-center">
 							<img
-								className={`pointer-events-none w-14 ${
-									drag ? 'animate-bounce' : ''
-								}`}
+								className={`pointer-events-none w-14 ${drag && 'animate-bounce'}`}
 								src="https://assets.kbsb.app/svg/icon_arrow_down_grey.svg"
 								alt="Arrow"
 							/>
