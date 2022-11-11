@@ -11,6 +11,9 @@ pnpm install
 # run dev server
 npm run dev
 pnpm run dev
+
+# build
+pnpm run build
 ```
 
 ## Todo
@@ -42,13 +45,14 @@ pnpm run dev
 
 ## Retrospective
 
-- I would have probably changed the component structure in a way that would make state management easier. An "ImageSequence" component (step 2) that contains the child-components, so that for example image-size values are easier to manage. I could still use StepSection, StepHeader, etc, but then the 4 steps would have their own state.
-- Use `.bind(this)` in the constructor to set the correct execution context for methods
+- [X] Refactored into function components. ~~I would have probably changed the component structure in a way that would make state management easier.~~ 
+    - [ ] An "ImageSequence" component (step 2) that contains the child-components, so that for example image-size values are easier to manage. I could still use StepSection, StepHeader, etc, but then the 4 steps would have their own state.
+- [X] Refactored into function components. ~~Use `.bind(this)` in the constructor to set the correct execution context for methods~~
 - References to passed down state don't re-render. `useState` only triggers a re-render with new values. 
-- Splitting `useState` in seperate single variables is easier to setup then combining multiple properties in one object/array. (Or maybe I'm unaware of some kind of trick 🤨)
-- Perhaps only use function-components instead of class-compoents. (So managing state accross components is easier?)
+- [X] ~~Splitting `useState` in seperate single variables is easier to setup then combining multiple properties in one object/array. (Or maybe I'm unaware of some kind of trick 🤨)~~
+- [X] ~~Perhaps only use function-components instead of class-compoents. (So managing state accross components is easier?)~~
 - Using more generic Git branchenames ("add-state-to-components" instead of "add-state-to-export-component") would have worked better when the application is still under construction. Specific feature branches perhaps work better when the application is fully working and new features are smaller.
-- Triggering an unmount CSS transition with a `setTimeout` is probably something that can be improved.
+- [ ] Triggering an unmount CSS transition with a `setTimeout` is ~~probably~~ something that can be improved. (But how?)
 
 ## Gifshot
 
