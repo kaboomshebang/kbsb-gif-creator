@@ -1,114 +1,103 @@
-import React from 'react';
+import { useRef, useState, useEffect } from 'react';
 
-class Image extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { update: 0 };
+const Image = (props) => {
+	const [imageSpecs, setImageSpecs] = useState({});
 
-		this.imgRef = React.createRef();
-		this.moveImage = this.moveImage.bind(this);
-		this.removeImage = this.removeImage.bind(this);
-	}
+	const { fileName = 'Placeholder image' } = props;
 
-	componentDidMount() {
-		if (this.props.alt !== 'Placeholder') {
-			this.imgRef.current.onload = () => {
-				this.setState({
-					width: this.imgRef.current.naturalWidth,
-					height: this.imgRef.current.naturalHeight,
-					ratio:
-						Math.round((this.imgRef.current.naturalWidth / this.imgRef.current.naturalHeight) * 1000) /
-						1000,
+	const imgRef = useRef(null);
+
+	useEffect(() => {
+		// do not apply to the default placeholder image
+		if (props.alt !== 'Placeholder') {
+			imgRef.current.onload = () => {
+				const ratio =
+					Math.round(
+						(imgRef.current.naturalWidth / imgRef.current.naturalHeight) * 1000
+					) / 1000;
+
+				setImageSpecs({
+					width: imgRef.current.naturalWidth,
+					height: imgRef.current.naturalHeight,
+					ratio: ratio,
 				});
-				this.props.ratioFunc([...this.props.ratioState, this.state.ratio]);
+
+				props.ratioFunc([...props.ratioState, ratio]);
 			};
 		}
-	}
+	});
 
-	// moves an image to the right
-	moveImage() {
+	const moveImage = () => {
 		// .filter filesState so that a new array is returned
-		const filesState = this.props.filesState.filter((el) => el);
-		const imgToMove = filesState[this.props.index];
-		const newPos = this.props.index + 1;
+		const filesState = props.filesState.filter((el) => el);
+		const imgToMove = filesState[props.index];
+		const newPos = props.index + 1;
 
 		if (newPos !== filesState.length) {
 			// remove the image from the array
-			filesState.splice(this.props.index, 1);
+			filesState.splice(props.index, 1);
 			// insert the image into the new position
 			filesState.splice(newPos, 0, imgToMove);
 		}
 
 		// update the files state
-		this.props.filesFunc(filesState);
-	}
+		props.filesFunc(filesState);
+	};
 
-	removeImage() {
-		this.setState({
-			ratio: null,
-		});
-		console.log(this.props.index);
+	const removeImage = () => {
+		// setRatio(null);
 
-		console.log(this.props.filesState);
+		const newFilesState = props.filesState.filter((el, i) => (i !== props.index ? el : null));
+		props.filesFunc(newFilesState);
 
-		const newFilesState = this.props.filesState.filter((el, i) => (i !== this.props.index ? el : null));
-		this.props.filesFunc(newFilesState);
-
-		console.log(this.props.index);
-		console.log(newFilesState);
 		//FIX the ratio state
-		const newRatioState = this.props.ratioState.filter((el, i) => (i !== this.props.index ? el : null));
-		console.log(newRatioState);
+		const newRatioState = props.ratioState.filter((el, i) => (i !== props.index ? el : null));
+		props.ratioFunc(newRatioState);
+	};
 
-		this.props.ratioFunc(newRatioState);
-	}
+	return (
+		<figure className="relative flex flex-col items-center justify-between bg-gray-100">
+			{props.alt !== 'Placeholder' ? (
+				<div className="absolute top-0 w-full flex justify-between p-2">
+					<button
+						className="w-8 p-1 bg-gray-700/75 rounded-md font-bold text-white"
+						onClick={moveImage}
+					>
+						{props.index + 1}
+					</button>
+					<button className="w-8 p-2 bg-gray-700/75 rounded-md" onClick={removeImage}>
+						<img
+							className="drop-shadow-md"
+							src="https://assets.kbsb.app/svg/icon_cross_white.svg"
+							alt="Cross"
+						/>
+					</button>
+				</div>
+			) : (
+				''
+			)}
+			<img
+				ref={imgRef}
+				className="w-full h-60 object-cover"
+				src={props.url}
+				alt={props.alt}
+			/>
+			<figcaption className="text-xs py-2 text-gray-400 text-center">
+				<div className="font-bold">📷 {fileName}</div>
 
-	render() {
-		return (
-			<figure className="relative flex flex-col items-center justify-between bg-gray-100">
-				{this.props.alt !== 'Placeholder' ? (
-					<div className="absolute top-0 w-full flex justify-between p-2">
-						<button
-							className="w-8 p-1 bg-gray-700/75 rounded-md font-bold text-white"
-							onClick={this.moveImage}
-						>
-							{this.props.index + 1}
-						</button>
-						<button className="w-8 p-2 bg-gray-700/75 rounded-md" onClick={this.removeImage}>
-							<img
-								className="drop-shadow-md"
-								src="https://assets.kbsb.app/svg/icon_cross_white.svg"
-								alt="Cross"
-							/>
-						</button>
-					</div>
-				) : (
-					''
-				)}
-				<img ref={this.imgRef} className="w-full h-60 object-cover" src={this.props.url} alt={this.props.alt} />
-				<figcaption className="text-xs py-2 text-gray-400 text-center">
-					<div className="font-bold">📷 {this.props.fileName}</div>
-
-					{this.props.alt !== 'Placeholder' ? (
-						<div className="mt-2">
-							<div>
-								width: {this.state.width}px
-								<br />
-								height: {this.state.height}px
-							</div>
-							<div>ratio: {this.state.ratio} : 1</div>
+				{props.alt !== 'Placeholder' && (
+					<div className="mt-2">
+						<div>
+							width: {imageSpecs.width}px
+							<br />
+							height: {imageSpecs.height}px
 						</div>
-					) : (
-						''
-					)}
-				</figcaption>
-			</figure>
-		);
-	}
-}
-
-Image.defaultProps = {
-	fileName: 'No images uploaded',
+						<div>ratio: {imageSpecs.ratio} : 1</div>
+					</div>
+				)}
+			</figcaption>
+		</figure>
+	);
 };
 
 export default Image;
