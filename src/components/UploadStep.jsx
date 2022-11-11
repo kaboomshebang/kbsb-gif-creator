@@ -1,40 +1,30 @@
-import React from 'react';
+import { useState } from 'react';
+
 import Button from './Button';
 import StepNumber from './StepNumber';
 
 import UploadModal from './UploadModal';
 
-const color = '#77A5A5';
+const UploadStep = (props) => {
+	const [showModal, setShowModal] = useState(false);
 
-class UploadStep extends React.Component {
-	constructor(props) {
-		super(props);
-		// bind this to the component
-		this.toggleModal = this.toggleModal.bind(this);
-		this.state = {
-			showModal: false,
-		};
-	}
+	const color = '#77A5A5';
 
-	toggleModal() {
-		this.setState((prevState) => ({
-			showModal: !prevState.showModal,
-		}));
-	}
+	const toggleModal = () => {
+		setShowModal((prevState) => !prevState);
+	};
 
-	render() {
-		return (
-			<section className="container mx-auto px-5 py-10">
-				<h1 className="text-2xl font-bold text-center">{this.props.title}</h1>
-				<h2 className="text-gray-400 text-center">{this.props.subTitle}</h2>
-				<div className="flex row justify-center space-x-2 p-5">
-					<StepNumber color={color} number="1"></StepNumber>
-					<Button btnClick={this.toggleModal}>Upload images</Button>
-				</div>
-				{this.state.showModal && <UploadModal btnClick={this.toggleModal} filesFunc={this.props.filesFunc} />}
-			</section>
-		);
-	}
-}
+	return (
+		<section className="container mx-auto px-5 py-10">
+			<h1 className="text-2xl font-bold text-center">{props.title}</h1>
+			<h2 className="text-gray-400 text-center">{props.subTitle}</h2>
+			<div className="flex row justify-center space-x-2 p-5">
+				<StepNumber color={color} number="1"></StepNumber>
+				<Button btnClick={toggleModal}>Upload images</Button>
+			</div>
+			{showModal && <UploadModal btnClick={toggleModal} filesFunc={props.filesFunc} />}
+		</section>
+	);
+};
 
 export default UploadStep;

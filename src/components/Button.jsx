@@ -1,24 +1,20 @@
-import React from 'react';
+const Button = (props) => {
+	const style = {
+		backgroundColor: props.color,
+	};
 
-class Button extends React.Component {
-	render() {
-		const style = {
-			backgroundColor: this.props.color,
-		};
-
-		return (
-			<button
-				id={this.props.id}
-				style={style}
-				className={`text-base font-medium bg-gray-300 px-7 py-2 ${
-					this.props.active ? 'bg-gray-700 text-white' : ''
-				}`}
-				onClick={this.props.btnClick}
-			>
-				{this.props.children}
-			</button>
-		);
-	}
-}
+	return (
+		<button
+			id={props.id}
+			style={style}
+			className={`text-base font-medium bg-gray-300 px-7 py-2 ${
+				props.active && 'bg-gray-700 text-white'
+			}`}
+			onClick={props.btnClick}
+		>
+			{props.children}
+		</button>
+	);
+};
 
 export default Button;
