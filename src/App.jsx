@@ -71,7 +71,12 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<NavHeader logoUrl={logoUrl} logoIcon={logo} logoIconAlt="Kaboom Shebang" menuIcon={logoMenu} />
+			<NavHeader
+				logoUrl={logoUrl}
+				logoIcon={logo}
+				logoIconAlt="Kaboom Shebang"
+				menuIcon={logoMenu}
+			/>
 			<UploadStep title={title} subTitle={subTitle} filesFunc={setFiles}></UploadStep>
 
 			{/* image sequence step */}
@@ -117,7 +122,14 @@ const App = () => {
 					title="Image quality"
 					description="A lower threshold value gives better quality results, but takes longer to generate (default: 4)."
 				></StepDescription>
-				<Slider valueFunc={setQuality} valueState={quality} min="1" max="5" step="1" default="4"></Slider>
+				<Slider
+					valueFunc={setQuality}
+					valueState={quality}
+					min="1"
+					max="5"
+					step="1"
+					default="4"
+				></Slider>
 			</StepSection>
 
 			{/* Export sequence step */}
