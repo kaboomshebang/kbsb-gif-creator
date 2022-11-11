@@ -1,4 +1,4 @@
-function NavMenu(props) {
+const NavMenu = () => {
 	return (
 		<nav className="absolute mt-8 top-0 right-0 p-5">
 			<div className="w-64 bg-white drop-shadow-xl p-5 border-gray-200 border">
@@ -31,6 +31,6 @@ function NavMenu(props) {
 			</div>
 		</nav>
 	);
-}
+};
 
 export default NavMenu;
