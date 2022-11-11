@@ -27,7 +27,7 @@ const title = 'kbsb GIF Creator';
 const subTitle = 'Create an animated GIF from still images';
 const placeholder = 'https://assets.kbsb.app/images/image-placeholder-grey-400px.png';
 
-function App() {
+const App = () => {
 	// component states
 	const [files, setFiles] = useState([]);
 	const [size, setSize] = useState({ width: 1000, height: 1000 });
